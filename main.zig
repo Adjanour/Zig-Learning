@@ -68,6 +68,20 @@ pub fn main() !void {
 
                 vm.stack.push(a + b);
             },
+            .mul => {
+                // get two operands form stack and add
+                const a = vm.stack.pop();
+                const b = vm.stack.pop();
+
+                vm.stack.push(a * b);
+            },
+            .div => {
+                // get two operands form stack and add
+                const a = vm.stack.pop();
+                const b = vm.stack.pop();
+
+                vm.stack.push(@divFloor(a, b));
+            },
             .print => {
                 // get result from stack using stack pointer and print
                 const value = vm.stack.pop();
